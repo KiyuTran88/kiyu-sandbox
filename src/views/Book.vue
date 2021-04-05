@@ -16,10 +16,10 @@
 				<div class="description">{{ book1.content }}</div>
 				<div class="button-wrap">
 					<div class="button-containted" v-if="book1.quantity === 0" @click="updateCart('add', book1)">
-						{{ book1.button.add }}
+						{{ book1.button }}
 					</div>
 					<div class="button-containted" v-if="book1.quantity > 0" @click="updateCart('remove', book1)">
-						{{ book1.button.remove }}
+						{{ book1.button }}
 					</div>
 				</div>
 			</div>
@@ -33,10 +33,10 @@
 				<div class="description">{{ book2.content }}</div>
 				<div class="button-wrap">
 					<div class="button-containted" v-if="book2.quantity === 0" @click="updateCart('add', book2)">
-						{{ book2.button.add }}
+						{{ book2.button }}
 					</div>
 					<div class="button-containted" v-if="book2.quantity > 0" @click="updateCart('remove', book2)">
-						{{ book2.button.remove }}
+						{{ book2.button }}
 					</div>
 				</div>
 			</div>
@@ -52,10 +52,10 @@
 				<div class="description">{{ book3.content }}</div>
 				<div class="button-wrap">
 					<div class="button-containted" v-if="book3.quantity === 0" @click="updateCart('add', book3)">
-						{{ book3.button.add }}
+						{{ book3.button }}
 					</div>
 					<div class="button-containted" v-if="book3.quantity > 0" @click="updateCart('remove', book3)">
-						{{ book3.button.remove }}
+						{{ book3.button }}
 					</div>
 				</div>
 			</div>
@@ -69,10 +69,10 @@
 				<div class="description">{{ book4.content }}</div>
 				<div class="button-wrap">
 					<div class="button-containted" v-if="book4.quantity === 0" @click="updateCart('add', book4)">
-						{{ book1.button.add }}
+						{{ book4.button }}
 					</div>
 					<div class="button-containted" v-if="book4.quantity > 0" @click="updateCart('remove', book4)">
-						{{ book4.button.remove }}
+						{{ book4.button }}
 					</div>
 				</div>
 			</div>
@@ -92,7 +92,7 @@ export default {
 				quantity: 0,
 				content:
 					"If you liked Where the Crawdads Sing, you’ll love This Tender Land...This story is as big-hearted as they come. The unforgettable story of four orphans who travel the Mississippi River on a life-changing odyssey during the Great Depression.",
-				button: { add: "Add to Cart", remove: "Remove from cart" },
+				button: "Add to Cart",
 			},
 			book2: {
 				image: require("../assets/notGiveFek.png"),
@@ -101,25 +101,25 @@ export default {
 				quantity: 0,
 				content:
 					"Flies in the face of so much conventional self-help wisdom that it’s hard not to label the book as anti-self-help. Yet, that label undermines how pragmatic the book actually is. In the overcrowded and over-clichéd self-help genre, this is a book well worth whatever f*cks you can muster.",
-				button: { add: "Add to Cart", remove: "Remove from cart" },
+				button: "Add to Cart",
 			},
 			book3: {
 				image: require("../assets/everythingFek.png"),
 				title: "Everything Is F*cked: A Book About Hope",
-				price: 100,
+				price: 99,
 				quantity: 0,
 				content:
 					"Everything Is F*cked is a New York Times bestseller written by Mark Manson. It is the follow-up to The Subtle Art of Not Giving a F*ck, which was itself a #1 New York Times bestseller. These books are a hit because of their humorous and counterintuitive approach to finding hope in a society overridden with hopelessness.",
-				button: { add: "Add to Cart", remove: "Remove from cart" },
+				button: "Add to Cart",
 			},
 			book4: {
 				image: require("../assets/thinkLikeMonk.png"),
 				title: "Think Like a Monk",
-				price: 100,
+				price: 108,
 				quantity: 0,
 				content:
 					"In this inspiring, empowering book, Shetty draws on his time as a monk to show us how we can clear the roadblocks to our potential and power. Combining ancient wisdom and his own rich experiences in the ashram, Think Like a Monk reveals how to overcome negative thoughts and habits, and access the calm and purpose that lie within all of us. ",
-				button: { add: "Add to Cart", remove: "Remove from cart" },
+				button: "Add to Cart",
 			},
 		}
 	},
@@ -130,9 +130,12 @@ export default {
 
 		updateCart(mode, book) {
 			if (mode === "add") {
-				return book.quantity++ && book.button.remove
+				// console.log(book.button)
+				book.button = "Remove from Cart"
+				book.quantity++
 			} else {
-				return book.quantity--
+				book.button = "Add to Cart"
+				book.quantity--
 			}
 		},
 	},
