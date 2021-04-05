@@ -1,6 +1,6 @@
 <template>
 	<header class="headline">
-		<h2>Book page</h2>
+		<h2>Book store</h2>
 		<div class="headline">
 			<span>Your cart: </span>
 			<span class="cart">{{ getTotal() }}</span>
