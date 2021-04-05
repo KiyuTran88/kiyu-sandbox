@@ -3,24 +3,22 @@
 		<h2>Book store</h2>
 		<div class="headline">
 			<span>Your cart: </span>
-			<span class="cart"></span>
+			<span class="cart">{{ selectedBook }} books</span>
 		</div>
 	</header>
-
-	<div class="main-wrap" v-for="getContent in bookList" :key="getContent">
-		<div>{{ getContent.quantity }}quantity</div>
-		<div class="book-content">
-			<div class="title-group">
-				<div class="title">{{ getContent.title }}</div>
-				<div class="price">${{ getContent.price }}</div>
+	<div class="main-wrap">
+		<div class="content-wrap" v-for="book in bookList" :key="book">
+			<div class="title-wrap">
+				<div class="title">{{ book.title }}</div>
+				<div class="price">${{ book.price }}</div>
 			</div>
-			<div>{{ getContent.content }}</div>
+			<div>{{ book.content }}</div>
 			<div class="button-wrap">
-				<div class="button-containted" v-if="getContent.quantity === 0" @click="updateCart('add', getContent)">
-					{{ getContent.button }}
+				<div class="button" v-if="book.quantity === 0" @click="updateCart('add', book)">
+					{{ book.button }}
 				</div>
-				<div class="button-containted" v-if="getContent.quantity > 0" @click="updateCart('remove', getContent)">
-					{{ getContent.button }}
+				<div class="button" v-if="book.quantity > 0" @click="updateCart('remove', book)">
+					{{ book.button }}
 				</div>
 			</div>
 		</div>
@@ -32,6 +30,7 @@ export default {
 	name: "Book",
 	data() {
 		return {
+			selectedBook: 0,
 			bookList: [
 				{
 					// image: require("../assets/tenderLand.png"),
@@ -73,18 +72,15 @@ export default {
 		}
 	},
 	methods: {
-		// getTotal() {
-		// 	return this.book1.quantity + this.book2.quantity + this.book3.quantity + this.book4.quantity
-		// },
-
-		updateCart(mode, getContent) {
+		updateCart(mode, book) {
 			if (mode === "add") {
-				// console.log(book.button)
-				getContent.button = "Remove from Cart"
-				getContent.quantity++
+				book.button = "Remove from Cart"
+				book.quantity++
+				this.selectedBook++
 			} else {
-				getContent.button = "Add to Cart"
-				getContent.quantity--
+				book.button = "Add to Cart"
+				book.quantity--
+				this.selectedBook--
 			}
 		},
 	},
@@ -102,18 +98,6 @@ export default {
 	h2 {
 		font-size: 2rem;
 		color: rgb(70, 57, 255);
-	}
-
-	p {
-		padding: 0;
-		margin: 0;
-	}
-}
-.test {
-	color: rgb(70, 57, 255);
-
-	.test-2 {
-		color: tomato;
 	}
 }
 .headline {
@@ -136,51 +120,48 @@ export default {
 		font-weight: 600;
 	}
 }
+.main-wrap {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 0.5rem;
 
-.page-wrap {
-   display: flex;
-   justify-content: center;
-   // background-color: rgb(255, 242, 166);
+	.content-wrap {
+		display: flex;
+		flex-direction: column;
+		background-color: #eee;
+		border-radius: 0.75rem;
+		padding: 1rem;
+		min-width: 20rem;
+		max-width: 32rem;
+		margin: 0.5rem;
 
-   .main-wrap {
-      display: flex;
-      margin: 0.5rem;
+		.title-wrap {
+			display: flex;
+			justify-content: space-between;
+			font-weight: 800;
+			margin-bottom: 1rem;
 
-      .content {
-         display: flex;
-         flex-direction: column;
-         background-color: #eee;
-         border-radius: 0.75rem;
-         padding: 1rem;
-         min-width: 26rem;
-         max-width: 34rem;
-
-         .title-group {
-            display: flex;
-            justify-content: space-between;
-            font-weight: 800;
-            margin-bottom: 1rem;
-
-            .title {
-               display: flex;
-               flex-direction: flex-start;
-               font-size: 1.25rem;
-            }
-            .price {
-               display: flex;
-               justify-content: flex-end;
-               font-size: 1.25rem;
-            }
-         }
-      }
-   }
+			.title {
+				display: flex;
+				flex-direction: flex-start;
+				font-size: 1.25rem;
+			}
+			.price {
+				display: flex;
+				justify-content: flex-end;
+				font-size: 1.25rem;
+			}
+		}
+	}
 }
+
 .button-wrap {
 	display: flex;
 	justify-content: flex-end;
 	margin-top: auto;
 
-	.button-containted {
+	.button {
 		display: flex;
 		justify-content: center;
 		align-items: center;
