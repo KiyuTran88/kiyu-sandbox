@@ -3,77 +3,24 @@
 		<h2>Book store</h2>
 		<div class="headline">
 			<span>Your cart: </span>
-			<span class="cart">{{ getTotal() }}</span>
+			<span class="cart"></span>
 		</div>
 	</header>
-	<div class="page-wrap">
-		<div class="main-wrap">
-			<div class="content">
-				<div class="title-group">
-					<div class="title">{{ book1.title }}</div>
-					<div class="price">${{ book1.price }}</div>
-				</div>
-				<div class="description">{{ book1.content }}</div>
-				<div class="button-wrap">
-					<div class="button-containted" v-if="book1.quantity === 0" @click="updateCart('add', book1)">
-						{{ book1.button }}
-					</div>
-					<div class="button-containted" v-if="book1.quantity > 0" @click="updateCart('remove', book1)">
-						{{ book1.button }}
-					</div>
-				</div>
+
+	<div class="main-wrap" v-for="getContent in bookList" :key="getContent">
+		<div>{{ getContent.quantity }}quantity</div>
+		<div class="book-content">
+			<div class="title-group">
+				<div class="title">{{ getContent.title }}</div>
+				<div class="price">${{ getContent.price }}</div>
 			</div>
-		</div>
-		<div class="main-wrap">
-			<div class="content">
-				<div class="title-group">
-					<div class="title">{{ book2.title }}</div>
-					<div class="price">${{ book2.price }}</div>
+			<div>{{ getContent.content }}</div>
+			<div class="button-wrap">
+				<div class="button-containted" v-if="getContent.quantity === 0" @click="updateCart('add', getContent)">
+					{{ getContent.button }}
 				</div>
-				<div class="description">{{ book2.content }}</div>
-				<div class="button-wrap">
-					<div class="button-containted" v-if="book2.quantity === 0" @click="updateCart('add', book2)">
-						{{ book2.button }}
-					</div>
-					<div class="button-containted" v-if="book2.quantity > 0" @click="updateCart('remove', book2)">
-						{{ book2.button }}
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="page-wrap">
-		<div class="main-wrap">
-			<div class="content">
-				<div class="title-group">
-					<div class="title">{{ book3.title }}</div>
-					<div class="price">${{ book3.price }}</div>
-				</div>
-				<div class="description">{{ book3.content }}</div>
-				<div class="button-wrap">
-					<div class="button-containted" v-if="book3.quantity === 0" @click="updateCart('add', book3)">
-						{{ book3.button }}
-					</div>
-					<div class="button-containted" v-if="book3.quantity > 0" @click="updateCart('remove', book3)">
-						{{ book3.button }}
-					</div>
-				</div>
-			</div>
-		</div>
-		<div class="main-wrap">
-			<div class="content">
-				<div class="title-group">
-					<div class="title">{{ book4.title }}</div>
-					<div class="price">${{ book4.price }}</div>
-				</div>
-				<div class="description">{{ book4.content }}</div>
-				<div class="button-wrap">
-					<div class="button-containted" v-if="book4.quantity === 0" @click="updateCart('add', book4)">
-						{{ book4.button }}
-					</div>
-					<div class="button-containted" v-if="book4.quantity > 0" @click="updateCart('remove', book4)">
-						{{ book4.button }}
-					</div>
+				<div class="button-containted" v-if="getContent.quantity > 0" @click="updateCart('remove', getContent)">
+					{{ getContent.button }}
 				</div>
 			</div>
 		</div>
@@ -85,57 +32,59 @@ export default {
 	name: "Book",
 	data() {
 		return {
-			book1: {
-				image: require("../assets/tenderLand.png"),
-				title: "This Tender Land",
-				price: 100,
-				quantity: 0,
-				content:
-					"If you liked Where the Crawdads Sing, you’ll love This Tender Land...This story is as big-hearted as they come. The unforgettable story of four orphans who travel the Mississippi River on a life-changing odyssey during the Great Depression.",
-				button: "Add to Cart",
-			},
-			book2: {
-				image: require("../assets/notGiveFek.png"),
-				title: "The Subtle Art of Not Giving a F*ck",
-				price: 101,
-				quantity: 0,
-				content:
-					"Flies in the face of so much conventional self-help wisdom that it’s hard not to label the book as anti-self-help. Yet, that label undermines how pragmatic the book actually is. In the overcrowded and over-clichéd self-help genre, this is a book well worth whatever f*cks you can muster.",
-				button: "Add to Cart",
-			},
-			book3: {
-				image: require("../assets/everythingFek.png"),
-				title: "Everything Is F*cked: A Book About Hope",
-				price: 99,
-				quantity: 0,
-				content:
-					"Everything Is F*cked is a New York Times bestseller written by Mark Manson. It is the follow-up to The Subtle Art of Not Giving a F*ck, which was itself a #1 New York Times bestseller. These books are a hit because of their humorous and counterintuitive approach to finding hope in a society overridden with hopelessness.",
-				button: "Add to Cart",
-			},
-			book4: {
-				image: require("../assets/thinkLikeMonk.png"),
-				title: "Think Like a Monk",
-				price: 108,
-				quantity: 0,
-				content:
-					"In this inspiring, empowering book, Shetty draws on his time as a monk to show us how we can clear the roadblocks to our potential and power. Combining ancient wisdom and his own rich experiences in the ashram, Think Like a Monk reveals how to overcome negative thoughts and habits, and access the calm and purpose that lie within all of us. ",
-				button: "Add to Cart",
-			},
+			bookList: [
+				{
+					// image: require("../assets/tenderLand.png"),
+					title: "This Tender Land",
+					price: 100,
+					quantity: 0,
+					content:
+						"If you liked Where the Crawdads Sing, you’ll love This Tender Land...This story is as big-hearted as they come. The unforgettable story of four orphans who travel the Mississippi River on a life-changing odyssey during the Great Depression.",
+					button: "Add to Cart",
+				},
+				{
+					// image: require("../assets/notGiveFek.png"),
+					title: "The Subtle Art of Not Giving a F*ck",
+					price: 101,
+					quantity: 0,
+					content:
+						"Flies in the face of so much conventional self-help wisdom that it’s hard not to label the book as anti-self-help. Yet, that label undermines how pragmatic the book actually is. In the overcrowded and over-clichéd self-help genre, this is a book well worth whatever f*cks you can muster.",
+					button: "Add to Cart",
+				},
+				{
+					// image: require("../assets/everythingFek.png"),
+					title: "Everything Is F*cked: A Book About Hope",
+					price: 99,
+					quantity: 0,
+					content:
+						"Everything Is F*cked is a New York Times bestseller written by Mark Manson. It is the follow-up to The Subtle Art of Not Giving a F*ck, which was itself a #1 New York Times bestseller. These books are a hit because of their humorous and counterintuitive approach to finding hope in a society overridden with hopelessness.",
+					button: "Add to Cart",
+				},
+				{
+					// image: require("../assets/thinkLikeMonk.png"),
+					title: "Think Like a Monk",
+					price: 108,
+					quantity: 0,
+					content:
+						"In this inspiring, empowering book, Shetty draws on his time as a monk to show us how we can clear the roadblocks to our potential and power. Combining ancient wisdom and his own rich experiences in the ashram, Think Like a Monk reveals how to overcome negative thoughts and habits, and access the calm and purpose that lie within all of us. ",
+					button: "Add to Cart",
+				},
+			],
 		}
 	},
 	methods: {
-		getTotal() {
-			return this.book1.quantity + this.book2.quantity + this.book3.quantity + this.book4.quantity
-		},
+		// getTotal() {
+		// 	return this.book1.quantity + this.book2.quantity + this.book3.quantity + this.book4.quantity
+		// },
 
-		updateCart(mode, book) {
+		updateCart(mode, getContent) {
 			if (mode === "add") {
 				// console.log(book.button)
-				book.button = "Remove from Cart"
-				book.quantity++
+				getContent.button = "Remove from Cart"
+				getContent.quantity++
 			} else {
-				book.button = "Add to Cart"
-				book.quantity--
+				getContent.button = "Add to Cart"
+				getContent.quantity--
 			}
 		},
 	},
@@ -160,7 +109,13 @@ export default {
 		margin: 0;
 	}
 }
+.test {
+	color: rgb(70, 57, 255);
 
+	.test-2 {
+		color: tomato;
+	}
+}
 .headline {
 	display: flex;
 	justify-content: space-between;
@@ -183,42 +138,42 @@ export default {
 }
 
 .page-wrap {
-	display: flex;
-	justify-content: center;
-	// background-color: rgb(255, 242, 166);
+   display: flex;
+   justify-content: center;
+   // background-color: rgb(255, 242, 166);
 
-	.main-wrap {
-		display: flex;
-		margin: 0.5rem;
+   .main-wrap {
+      display: flex;
+      margin: 0.5rem;
 
-		.content {
-			display: flex;
-			flex-direction: column;
-			background-color: #eee;
-			border-radius: 0.75rem;
-			padding: 1rem;
-			min-width: 26rem;
-			max-width: 34rem;
+      .content {
+         display: flex;
+         flex-direction: column;
+         background-color: #eee;
+         border-radius: 0.75rem;
+         padding: 1rem;
+         min-width: 26rem;
+         max-width: 34rem;
 
-			.title-group {
-				display: flex;
-				justify-content: space-between;
-				font-weight: 800;
-				margin-bottom: 1rem;
+         .title-group {
+            display: flex;
+            justify-content: space-between;
+            font-weight: 800;
+            margin-bottom: 1rem;
 
-				.title {
-					display: flex;
-					flex-direction: flex-start;
-					font-size: 1.25rem;
-				}
-				.price {
-					display: flex;
-					justify-content: flex-end;
-					font-size: 1.25rem;
-				}
-			}
-		}
-	}
+            .title {
+               display: flex;
+               flex-direction: flex-start;
+               font-size: 1.25rem;
+            }
+            .price {
+               display: flex;
+               justify-content: flex-end;
+               font-size: 1.25rem;
+            }
+         }
+      }
+   }
 }
 .button-wrap {
 	display: flex;
