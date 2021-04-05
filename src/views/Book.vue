@@ -6,7 +6,7 @@
 			<span class="cart">{{ selectedBook }} books</span>
 		</div>
 	</header>
-	<div class="main-wrap">
+	<div class="page-wrap">
 		<div class="content-wrap" v-for="book in bookList" :key="book">
 			<div class="title-wrap">
 				<div class="title">{{ book.title }}</div>
@@ -120,7 +120,7 @@ export default {
 		font-weight: 600;
 	}
 }
-.main-wrap {
+.page-wrap {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;

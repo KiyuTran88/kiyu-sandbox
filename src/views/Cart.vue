@@ -3,7 +3,7 @@
 	<!-------------- Menu  -------------->
 	<div class="main-wrap">
 		<h3>Please choose your menu:</h3>
-		<div class="content">
+		<div class="food-content">
 			<div class="food-item">
 				<div class="label">{{ item1.label }}</div>
 				<div class="label">${{ item1.price }}</div>
@@ -16,7 +16,7 @@
 		</div>
 	</div>
 	<div class="main-wrap">
-		<div class="content">
+		<div class="food-content">
 			<div class="food-item">
 				<div class="label">{{ item2.label }}</div>
 				<div class="label">${{ item2.price }}</div>
@@ -29,7 +29,7 @@
 		</div>
 	</div>
 	<div class="main-wrap">
-		<div class="content">
+		<div class="food-content">
 			<div class="food-item">
 				<div class="label">{{ item3.label }}</div>
 				<div class="label">${{ item3.price }}</div>
@@ -110,7 +110,7 @@ body {
 	flex-direction: column;
 	margin: 0.5rem;
 
-	.content {
+	.food-content {
 		display: flex;
 		justify-content: center;
 		align-items: center;
