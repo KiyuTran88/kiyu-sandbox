@@ -1,12 +1,14 @@
 <template>
 	<h2>Team members</h2>
-	<div class="content-wrap" v-for="member in teamUX" :key="member">
-		<div>{{ member.role }} : {{ member.name }}</div>
-	</div>
 	<div class="button-wrap">
-		<div class="button" @click="checkRole()">Hide Senior</div>
-		<div class="button">Hide Junior</div>
+		<div class="button" @click="isSeniorShow = !isSeniorShow">{{ checkState(isSeniorShow) }} Seniors</div>
+		<div class="button" @click="isJuniorShow = !isJuniorShow">{{ checkState(isJuniorShow) }} Junior</div>
 	</div>
+	<div v-for="member in teamUX" :key="member">
+		<div class="content-wrap" v-if="checkRoles(member.role)">{{ member.role }} : {{ member.name }}</div>
+	</div>
+	<div>Is member Senior? {{ isSeniorShow }}</div>
+	<div>Is member Junior? {{ isJuniorShow }}</div>
 </template>
 
 <script>
@@ -14,31 +16,34 @@ export default {
 	name: "Member",
 	data() {
 		return {
+			isSeniorShow: true,
+			isJuniorShow: true, // toggle Boolean && used to change state
 			teamUX: [
-				{ role: "Senior"},
-				{ role: "Senior"},
-				{ role: "Senior"},
-				{ role: "Senior"},
-				{ role: "Junior"},
-				{ role: "Junior"},
+				{ role: "Senior", name: "Anthony" },
+				{ role: "Senior", name: "Kleine" },
+				{ role: "Senior", name: "Kiyu" },
+				{ role: "Senior", name: "Mick" },
+				{ role: "Junior", name: "Michelle" },
+				{ role: "Junior", name: "Jarvey" },
 			],
-			// teamUX: [
-			// 	{ role: "Senior", name: "Anthony" },
-			// 	{ role: "Senior", name: "Kleine" },
-			// 	{ role: "Senior", name: "Kiyu" },
-			// 	{ role: "Senior", name: "Mick" },
-			// 	{ role: "Junior", name: "Michelle" },
-			// 	{ role: "Junior", name: "Jarvey" },
-			// ],
 		}
 	},
 	methods: {
-		checkRole() {
-         this.teamUX.role === roles
-			if (roles === "Senior") {
-				console.log("Senior")
+		checkState(state) { // toggle in commom use
+			if (state === true) {
+				return "Show"
 			} else {
-				console.log("Junior")
+				return "Hide"
+			}
+		},
+		checkRoles(role) {
+			if (role === "Senior" && this.isSeniorShow === true) {
+				// always use this. to call variable else vue will return error
+				return true //  check if role = senior AND isSenior = true, will return TRUE
+			} else if (role === "Junior" && this.isJuniorShow === true) {
+				return true //  check if role = junior AND isJunior = true, will return TRUE
+			} else {
+				return false
 			}
 		},
 	},
