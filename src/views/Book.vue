@@ -1,9 +1,9 @@
 <template>
-	<header class="headline">
+	<header class="headline-wrap">
 		<h2>Book store</h2>
-		<div class="headline">
+		<div class="headline-wrap">
 			<span>Your cart: </span>
-			<span class="cart">{{ selectedBook }} books</span>
+			<span class="shopping-cart">{{ selectedBook }} books</span>
 		</div>
 	</header>
 	<div class="page-wrap">
@@ -100,13 +100,13 @@ export default {
 		color: rgb(70, 57, 255);
 	}
 }
-.headline {
+.headline-wrap {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	padding: 0 1rem;
 
-	.cart {
+	.shopping-cart {
 		background-color: #4639ff;
 		color: white;
 		display: flex;
