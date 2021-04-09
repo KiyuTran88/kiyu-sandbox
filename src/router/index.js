@@ -27,6 +27,11 @@ const routes = [
     name: 'Shopping',
     component: () => import('../views/ShoppingCart.vue')
   },
+  {
+    path: '/grocery',
+    name: 'Grocery',
+    component: () => import('../views/Grocery.vue')
+  },
 ]
 
 const router = createRouter({
