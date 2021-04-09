@@ -3,31 +3,18 @@
 
 	<div class="main-wrap" @click="isCartShown" v-for="item in itemList" :key="item">
 		<div class="content-wrap">
-			<div @click="updateCart('add', item)" class="item-label">
-				<div @click="passedItem(item.name, item.price)">{{ item.name }}</div>
-				<!-- <div>{{ item.quantity }}</div> -->
-				<div @click="passedItem(item.name, item.price)">${{ item.price }}</div>
+			<div class="item-label">
+				<div @click="addItemTop(item)">{{ item }}</div>
 			</div>
 		</div>
 	</div>
-
-	<div class="cart-wrap" v-if="!isCartShown && totalItems > 0">
+	<h3>Your cart:</h3>
+	<div class="main-wrap" v-for="newItem in selectedItems" :key="newItem">
 		<div class="content-wrap">
-			<h3>Your Cart:</h3>
-			<br />
 			<div class="item-label">
-				<div>{{ selectedItems.name }}</div>
-				<div>${{ selectedItems.price }}</div>
-			</div>
-			<br /><br />
-			<div class="item-label">
-				<div>Total: ${{ totalPrice() }}</div>
-				<div>Items: {{ totalItems }}</div>
-				<button @click="updateCart('minus', itemList)">-</button>
-				<button @click="updateCart('add', itemList)">+</button>
+				<div @click="removeItem(newItem)">{{ newItem }}</div>
 			</div>
 		</div>
-		<div class="cart-wrap"></div>
 	</div>
 </template>
 
@@ -39,59 +26,26 @@ export default {
 			isCartShown: false,
 			totalItems: 0,
 			selectedItems: [], // empty cart, pls put items here
-			itemList: [
-				{
-					name: "Mini Tomato",
-					price: 5,
-					quantity: 0,
-					stock: 5,
-				},
-				{
-					name: "US Potato",
-					price: 3,
-					quantity: 0,
-					stock: 10,
-				},
-				{
-					name: "Baby Carrot",
-					price: 8,
-					quantity: 0,
-					stock: 10,
-				},
-				{
-					name: "Local Squash",
-					price: 7,
-					quantity: 0,
-					stock: 10,
-				},
-				{
-					name: "Chinese Chili",
-					price: 2,
-					quantity: 0,
-					stock: 10,
-				},
-			],
+			itemList: ["Tomato","Fish","Bread"]
 		}
 	},
 	methods: {
-		updateCart(mode, item) {
-			if (mode === "add") {
-				// item.name = "Added to cart!"
-				// item.price = "USD"
-				item.quantity++
-				this.totalItems++
-			} else {
-				item.quantity--
-				this.totalItems--
-			}
+		// checkDuplicate(item) {
+		// 	if (item === item) {
+		// 		console.log("Tomato")
+		// 	} else {
+		// 		console.log("Not Tomato")
+		// 	}
+		// },
+		addItemTop(item) {
+			//unshift() add item on top of Array
+			this.selectedItems.unshift(item)
+			console.log(item)
 		},
-
-		passedItem(passedName, passedPrice) { // passdata to cart
-			this.selectedItems = { name: passedName, price: passedPrice }
-		},
-
-		totalPrice() {
-			return this.selectedItems.price * this.totalItems
+		removeItem(item) {
+			//shift() remove item on top of Array
+			this.selectedItems.shift(item)
+			console.log(item)
 		},
 	},
 }
@@ -106,15 +60,20 @@ body {
 	color: #333;
 
 	h2 {
-		color: #00bf82;
+		color: #00abff;
 		font-size: 2rem;
 		padding: 0 1rem;
 	}
 	h3 {
-		color: #00bf82;
+		color: #00abff;
 		font-size: 1.3rem;
 		margin: 0;
 		padding: 0.25rem 0;
+	}
+	button {
+		width: 10rem;
+		margin: 0.25rem;
+		padding: 0.25rem;
 	}
 }
 .main-wrap {
@@ -122,7 +81,7 @@ body {
 	flex-wrap: wrap;
 	justify-content: flex-start;
 	margin: 0.5rem;
-	width: 10rem;
+	width: 8rem;
 
 	.content-wrap {
 		display: flex;
@@ -130,11 +89,10 @@ body {
 		background-color: #eee;
 		border-radius: 0.75rem;
 		padding: 1rem;
-		min-width: 20rem;
-		max-width: 32rem;
+		min-width: 14rem;
 		margin: 0.25rem;
 		&:hover {
-			color: #00bf82;
+			color: #00abff;
 		}
 		&:visited {
 			color: rgb(172, 172, 172);
@@ -146,7 +104,7 @@ body {
 			font-weight: 600;
 			// background-color: rgb(154, 223, 223);
 			&:hover {
-				color: #00bf82;
+				color: #00abff;
 			}
 		}
 		.item-stock {
@@ -187,5 +145,4 @@ body {
 		}
 	}
 }
-
 </style>
