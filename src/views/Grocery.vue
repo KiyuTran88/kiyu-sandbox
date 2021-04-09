@@ -89,7 +89,7 @@ body {
 		padding: 0 1rem;
 	}
 	h3 {
-		color: #00bf82;
+		color: #02ea8b;
 		font-size: 1.3rem;
 		margin: 0;
 		padding: 0.25rem 0;
@@ -172,7 +172,7 @@ body {
 					display: flex;
 
 					.button {
-						background-color: #00bf82;
+						background-color: #02ea8b;
 						padding: 0rem 0.5rem;
 						margin: 0 0.25rem;
 						border-radius: 1rem;
@@ -201,7 +201,7 @@ body {
 		margin: 1rem 0.5rem;
 
 		.total-price {
-			color: #00bf82;
+			color: #02ea8b;
 			font-weight: 800;
 			font-size: 1.25rem;
 		}
