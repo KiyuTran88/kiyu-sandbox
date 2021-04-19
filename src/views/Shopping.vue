@@ -61,7 +61,7 @@ export default {
 				this.selectedCart.unshift(item) // add item on top of new array
 				item.quantity++
 			} else {
-				let missingItemIndex = this.selectedCart.findIndex((missingItem) => missingItem.name == item.name) // this is return a index of missing item for slice
+				let missingItemIndex = this.selectedCart.findIndex((missingItem) => missingItem.name == item.name) // this is return a index of missing item
 				this.selectedCart.splice(missingItemIndex, 1)
 				item.quantity = 0
 			}
@@ -70,7 +70,7 @@ export default {
 			if (mode === "add") {
 				item.quantity++
 			} else if (mode === "remove") {
-				let missingItemIndex = this.selectedCart.findIndex((missingItem) => missingItem.name == item.name) // this is return a index of missing item for slice
+				let missingItemIndex = this.selectedCart.findIndex((missingItem) => missingItem.name == item.name) // this is return a index of missing item
 				this.selectedCart.splice(missingItemIndex, 1)
 				item.isSelected = false
 				item.quantity = 0
