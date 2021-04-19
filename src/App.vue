@@ -5,7 +5,7 @@
     <router-link to="/book">Book</router-link> |
     <router-link to="/member">Member</router-link> |
     <router-link to="/shopping">Shopping Cart</router-link> |
-    <router-link to="/grocery">Grocery</router-link>
+    <router-link to="/grocery">Grocery</router-link> |
   </div>
   <router-view/>
 </template>

@@ -11,8 +11,8 @@
 	<div class="page-wrap">
 		<h3>Your Cart</h3>
 		<div class="cart-wrap" v-for="item in selectedCart" :key="item">
-			<div class="cart-content-wrap" v-if="item.isSelected === true && item.quantity >= 0">				
-            <div class="cart-label">
+			<div class="cart-content-wrap" v-if="item.isSelected === true && item.quantity >= 0">
+				<div class="cart-label">
 					<div>{{ item.name }}&nbsp;&nbsp;&nbsp;@&nbsp;{{ item.quantity }}x ${{ item.price }}</div>
 					<div>${{ item.quantity * item.price }}</div>
 					<div class="button-wrap">
@@ -35,7 +35,7 @@ export default {
 	name: "Grocery",
 	data() {
 		return {
-         selectedCart: [],
+			selectedCart: [],
 			itemList: [
 				{ name: "Dry Noodle", price: 4, quantity: 0, isSelected: false },
 				{ name: "White Rice", price: 6, quantity: 0, isSelected: false },
@@ -56,21 +56,22 @@ export default {
 	},
 	methods: {
 		updatedCart(item) {
-         item.isSelected = !item.isSelected
+			item.isSelected = !item.isSelected
 			if (item.isSelected == true) {
-            this.selectedCart.unshift(item) // add item on top of new array
-            item.quantity++
+				this.selectedCart.unshift(item) // add item on top of new array
+				item.quantity++
 			} else {
-            let missingItemIndex = this.selectedCart.findIndex((missingItem) => missingItem.name == item.name) // this is return a index for slice
-            this.selectedCart.splice(missingItemIndex, 1)
+				let missingItemIndex = this.selectedCart.findIndex((missingItem) => missingItem.name == item.name) // this is return a index of missing item for slice
+				this.selectedCart.splice(missingItemIndex, 1)
 				item.quantity = 0
 			}
-         
 		},
 		updatedItemQty(mode, item) {
 			if (mode === "add") {
 				item.quantity++
 			} else if (mode === "remove") {
+				let missingItemIndex = this.selectedCart.findIndex((missingItem) => missingItem.name == item.name) // this is return a index of missing item for slice
+				this.selectedCart.splice(missingItemIndex, 1)
 				item.isSelected = false
 				item.quantity = 0
 			} else {
@@ -177,7 +178,7 @@ body {
 					display: flex;
 
 					.button {
-						background-color: #02ea8b;
+						background-color: #6afff8;
 						padding: 0rem 0.5rem;
 						margin: 0 0.25rem;
 						border-radius: 1rem;
