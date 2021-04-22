@@ -6,26 +6,10 @@
 			<span class="shopping-cart">{{ selectedBook }} books</span>
 		</div>
 	</header>
-	<div class="page-wrap">
-		<div class="content-wrap" v-for="book in bookList" :key="book">
-			<div class="title-wrap">
-				<div class="title">{{ book.title }}</div>
-				<div class="price">${{ book.price }}</div>
-			</div>
-			<div>{{ book.content }}</div>
-			<div class="button-wrap">
-				<div class="button" v-if="book.quantity === 0" @click="updateCart('add', book)">
-					{{ book.button }}
-				</div>
-				<div class="button" v-if="book.quantity > 0" @click="updateCart('remove', book)">
-					{{ book.button }}
-				</div>
-			</div>
-		</div>
-	</div>
+<base-card :bookList="bookList" @updateCart="updateCart"></base-card>
 </template>
-
 <script>
+import baseCard from "../components/common/base-card"
 export default {
 	name: "Book",
 	data() {
@@ -84,6 +68,9 @@ export default {
 			}
 		},
 	},
+	components: {
+		"base-card" : baseCard
+	}
 }
 </script>
 
