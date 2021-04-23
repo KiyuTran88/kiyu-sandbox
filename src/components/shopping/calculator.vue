@@ -15,8 +15,8 @@
 	<div class="main-wrap">
 		<div class="total">
 			<div>Total:</div>
-			<div>
-				<!-- <b style="font-size: 1.1rem">${{ $emit('totalAmount') }}</b> -->
+			<div style="font-size: 1.1rem">
+				<div>$</div>
 			</div>
 		</div>
 	</div>
@@ -28,10 +28,13 @@ export default {
    data (){
       return{}
    },
+	methods:{
+
+	},
    props: {
       itemList: Object,
    },
-   emits: ['updateAmount']
+   emits: ["updateAmount","getIndex"]
 }
 </script>
 

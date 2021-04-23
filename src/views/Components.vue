@@ -1,11 +1,6 @@
 <template>
 	<left-list :itemList="itemList" @changeState="changeState"></left-list>
-	<cart-list
-		:itemList="itemList"
-		@changeState="changeState"
-		@changeItemQuantity="changeItemQuantity"
-		@removeItem="removeItem"
-	></cart-list>
+	<cart-list :itemList="itemList" @changeState="changeState" @updatedItemQty="updatedItemQty"></cart-list>
 </template>
 <script>
 import List from "../components/shopping/left-list"
@@ -14,9 +9,10 @@ export default {
 	data() {
 		return {
 			itemList: [
-				{ name: "Salmon", price: 6, quantity: 1, isSelected: false }, //0
-				{ name: "Beef", price: 5, quantity: 1, isSelected: false },
-				{ name: "Eggs", price: 8, quantity: 1, isSelected: false },
+				{ name: "Salmon", price: 6, quantity: 0, isSelected: false }, //0
+				{ name: "Beef", price: 5, quantity: 0, isSelected: false },
+				{ name: "Eggs", price: 8, quantity: 0, isSelected: false },
+				{ name: "Noodle", price: 15, quantity: 0, isSelected: false },
 			],
 		}
 	},
@@ -29,31 +25,29 @@ export default {
 			// value shows Salmon
 			let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
 			this.itemList[missingIndex].isSelected = !this.itemList[missingIndex].isSelected
+			this.itemList[missingIndex].quantity = 0 // reset item.quantity = 0 when it remove from Cart
 		},
-		// updatedItemQty(mode, item) {
-		// 	if (mode === "add") {
-		// 		let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
+		updatedItemQty(mode, item) {
+			let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
+			if (mode === "add") {
+				this.itemList[missingIndex].quantity++
+			} else if(mode === "minus" && this.itemList[missingIndex].quantity > 0){
+				this.itemList[missingIndex].quantity--
+			} else{
+				this.itemList[missingIndex].isSelected = false
+				this.itemList[missingIndex].quantity = 0
+			}
+		},
+
+		// changeItemQuantity(math, item) {
+		// 	let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
+		// 	if (this.itemList[missingIndex].quantity >= 0){
+		// 		this.itemList[missingIndex].quantity += math
+		// 	}else{
 		// 		this.itemList[missingIndex].isSelected = !this.itemList[missingIndex].isSelected
-		// 		this.itemList[missingIndex].quantity+1
-		// 		// console.log(missingIndex)
-		// 	} else {
-		// 		let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
-		// 		this.itemList[missingIndex].isSelected = !this.itemList[missingIndex].isSelected
-		// 		this.itemList[missingIndex].quantity-1
-		// 		// console.log(missingIndex)
+		// 		this.itemList[missingIndex].quantity = 0
 		// 	}
 		// },
-
-		changeItemQuantity(math, item) {
-				let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
-				this.itemList[missingIndex].quantity+=math
-				console.log(this.itemList[missingIndex].quantity)
-		},
-		removeItem(item) {
-			let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
-			this.itemList[missingIndex].quantity=0
-			console.log(this.itemList[missingIndex].isSelected)
-		},
 	},
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
 	<h2>Shop now</h2>
-	<div class="main-wrap" v-for="item in itemList" :key="item" @click="$emit('changeState', item.name)">
-		<div class="content-wrap" v-if="item.isSelected === false">
-			<div class="item-label">
-				<div>{{ item.name }} {{ item.isSelected }}</div>
+	<div class="main-wrap" v-for="item in itemList" :key="item">
+		<div class="content-wrap" v-if="item.isSelected === false" @click="$emit('changeState', item.name)">
+			<div class="item-label" >
+				<div>{{ item.name }}</div>
 				<div>${{ item.price }}</div>
 			</div>
 		</div>

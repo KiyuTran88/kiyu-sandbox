@@ -1,18 +1,23 @@
 <template>
 	<div class="page-wrap">
 		<h3>Your Cart</h3>
-		<div class="cart-wrap" v-for="item in itemList" :key="item" @click="$emit('changeState', item.name)">
-			<div class="cart-content-wrap" v-if="item.isSelected === true && item.quantity > 0">
+		<div class="cart-wrap" v-for="item in itemList" :key="item" @click="$emit('changeState', item.name)" >
+			<div class="cart-content-wrap" v-if="item.isSelected === true && item.quantity >=0 ">
 				<div class="cart-label">
-					<div>{{ item.name }}&nbsp;{{ item.isSelected }}&nbsp;&nbsp;&nbsp;@&nbsp;{{ item.quantity }}x ${{ item.price }}</div>
+					<div>{{ item.name }}</div>
+					<div>&nbsp;@{{ item.quantity }}x ${{ item.price }}</div>
 					<div>${{ item.quantity * item.price }}</div>
 					<div class="button-wrap">
-						<div @click.stop="$emit('changeItemQuantity', 1 , item.name)" class="button">+</div>
-						<div @click.stop="$emit('changeItemQuantity', -1 , item.name)" class="button">-</div>
-						<div @click="$emit('removeItem', item.name)" class="button">x</div>
+						<span @click.stop="$emit('updatedItemQty', 'add', item.name)" class="button">+</span>
+						<span @click.stop="$emit('updatedItemQty', 'minus', item.name)" class="button">-</span>
+						<span @click.stop="$emit('updatedItemQty', 'remove', item.name)" class="button">x</span>
 					</div>
 				</div>
 			</div>
+		</div>
+		<div class="total-wrap" v-if="calculateTotal > 0">
+			<div>Total:</div>
+			<div class="total-price">${{ calculateTotal }}&nbsp;</div>
 		</div>
 	</div>
 </template>
@@ -22,10 +27,20 @@ export default {
 	data() {
 		return {}
 	},
+	computed: {
+		calculateTotal() {
+			let totalPrice = 0
+			for (const item of this.itemList){  // item in itemList array 
+				console.log(item.quantity * item.price)
+				totalPrice = totalPrice + item.quantity * item.price
+			}
+			return totalPrice
+		},
+	},
 	props: {
 		itemList: Object,
 	},
-	emits: ['changeState','removeItem','changeItemQuantity']
+	emits: ["changeState", "updatedItemQty"],
 }
 </script>
 
@@ -147,6 +162,10 @@ body {
 				font-size: 0.75rem;
 			}
 		}
+	}
+	.selected {
+		background-color: rgb(243, 243, 243);
+		color: #888;
 	}
 	.total-wrap {
 		display: flex;

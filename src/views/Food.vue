@@ -20,19 +20,15 @@ export default {
 			if (mode === "minus") {
 				let missingIndex = this.itemList.findIndex((foodItem) => foodItem.label == item)
 				this.itemList[missingIndex].amount--
-				console.log(missingIndex)
+				// console.log(missingIndex)
 			} else {
 				let missingIndex = this.itemList.findIndex((foodItem) => foodItem.label == item)
 				this.itemList[missingIndex].amount++
-				console.log(missingIndex)
+				// console.log(missingIndex)
 			}
 		},
-		// totalAmount() {
-		// 	return (
-		// 		this.item.amount * this.item.price
-		// 	)
-		// },
 	},
+
 	components: {
 		calculator: calculator,
 	},
