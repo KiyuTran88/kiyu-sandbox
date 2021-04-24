@@ -23,19 +23,21 @@ export default {
 	methods: {
 		changeState(item) {
 			// value shows Salmon
-			let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
-			this.itemList[missingIndex].isSelected = !this.itemList[missingIndex].isSelected
-			this.itemList[missingIndex].quantity = 0 // reset item.quantity = 0 when it remove from Cart
+			let array = this.itemList
+			let missingIndex = array.findIndex((foodItem) => foodItem.name == item)
+			array[missingIndex].isSelected = !array[missingIndex].isSelected
+			array[missingIndex].quantity = 0 // reset item.quantity = 0 when it remove from Cart
 		},
 		updatedItemQty(mode, item) {
-			let missingIndex = this.itemList.findIndex((foodItem) => foodItem.name == item)
+			let array = this.itemList
+			let missingIndex = array.findIndex((foodItem) => foodItem.name == item)
 			if (mode === "add") {
-				this.itemList[missingIndex].quantity++
-			} else if(mode === "minus" && this.itemList[missingIndex].quantity > 0){
-				this.itemList[missingIndex].quantity--
-			} else{
-				this.itemList[missingIndex].isSelected = false
-				this.itemList[missingIndex].quantity = 0
+				array[missingIndex].quantity++
+			} else if (mode === "minus" && array[missingIndex].quantity > 0) {
+				array[missingIndex].quantity--
+			} else {
+				array[missingIndex].isSelected = false
+				array[missingIndex].quantity = 0
 			}
 		},
 
