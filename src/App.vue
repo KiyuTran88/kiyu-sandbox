@@ -9,6 +9,7 @@
     <router-link to="/grocery">Grocery</router-link> |
     <router-link to="/components">Components</router-link> |
     <router-link to="/deeppropsemit">DeepPropsEmit</router-link> |
+    <router-link to="/ProvideInject">ProvideInject</router-link>
   </div>
   <router-view/>
 </template>

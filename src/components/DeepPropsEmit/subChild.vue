@@ -1,6 +1,6 @@
 <template>
 	<div>Sub Child food: {{ mainChildFood }}</div>
-    <button @click="changeFood('Carrot')">Change food</button>
+    <button @click="changeFood('Mango')">Change food</button>
 </template>
 
 <script>

@@ -7,7 +7,7 @@
 export default {
 	data(){
 		return{
-			parentFood: "salmon"
+			parentFood: "Salmon"
 		}
 	},
 	components: {

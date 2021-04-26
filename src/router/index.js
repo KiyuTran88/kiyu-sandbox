@@ -47,6 +47,11 @@ const routes = [
     name: 'DeepPropsEmit',
     component: () => import('../views/DeepPropsEmit.vue')
   },
+  {
+    path: '/provideinject',
+    name: 'ProvideInject',
+    component: () => import('../views/ProvideInject.vue')
+  },
 ]
 
 const router = createRouter({
