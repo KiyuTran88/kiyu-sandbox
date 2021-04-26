@@ -42,6 +42,11 @@ const routes = [
     name: 'Components',
     component: () => import('../views/Components.vue')
   },
+  {
+    path: '/deeppropsemit',
+    name: 'DeepPropsEmit',
+    component: () => import('../views/DeepPropsEmit.vue')
+  },
 ]
 
 const router = createRouter({

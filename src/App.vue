@@ -8,6 +8,7 @@
     <router-link to="/shopping">Shopping Cart</router-link> |
     <router-link to="/grocery">Grocery</router-link> |
     <router-link to="/components">Components</router-link> |
+    <router-link to="/deeppropsemit">DeepPropsEmit</router-link> |
   </div>
   <router-view/>
 </template>
