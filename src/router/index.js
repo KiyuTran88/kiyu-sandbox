@@ -52,6 +52,21 @@ const routes = [
     name: 'ProvideInject',
     component: () => import('../views/ProvideInject.vue')
   },
+  {
+    path: '/selectcard',
+    name: 'SelectCard',
+    component: () => import('../views/SelectCard.vue')
+  },
+  {
+    path: '/vmodel',
+    name: 'Vmodel',
+    component: () => import('../views/Vmodel.vue')
+  },
+  {
+    path: '/computed',
+    name: 'Computed',
+    component: () => import('../views/Computed.vue')
+  },
 ]
 
 const router = createRouter({

@@ -1,5 +1,6 @@
 <template>
 	<div>Sub Child food: {{ foodName }}</div>
+	<button @click="logItem">log status</button>
 </template>
 
 <script>
@@ -11,7 +12,7 @@ export default {
 	provide: {
 		subChildFood: "tomato",
 	},
-	inject: ["foodName"], // get data directly from parent by using provide
+	inject: ["foodName","logItem"], // get data directly from parent by using provide
 }
 </script>
 

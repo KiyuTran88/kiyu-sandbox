@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="14px" height="14px" viewBox="0 0 14 14" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Shape</title>
+    <g id="D---Flow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="5.2-Home-/-Right-Sheet-AL" transform="translate(-1245.000000, -108.000000)" fill="#FFFFFF">
+            <g id="Nav-Drawer-/-Desktop-/-AL" transform="translate(510.000000, 79.000000)">
+                <g id="Top-Bar" transform="translate(370.000000, 0.000000)">
+                    <g id="Actions-Group" transform="translate(271.000000, 12.000000)">
+                        <g id="⌽-ACTION-ICONS" transform="translate(77.000000, 0.000000)">
+                            <g id="ICON" transform="translate(17.000000, 17.000000)">
+                                <path d="M8.4145,7.00025 L13.0005,2.414 C13.3915,2.023 13.3915,1.391 13.0005,1 C12.6105,0.609 11.9775,0.609 11.5865,1 L7.0005,5.58625 L2.414,1 C2.024,0.609 1.391,0.609 1,1 C0.61,1.391 0.61,2.023 1,2.414 L5.5865,7.00025 L1,11.586 C0.61,11.977 0.61,12.609 1,13 C1.196,13.195 1.452,13.293 1.707,13.293 C1.963,13.293 2.219,13.195 2.414,13 L7.0005,8.41425 L11.586,13 C11.782,13.195 12.038,13.293 12.293,13.293 C12.549,13.293 12.805,13.195 13,13 C13.391,12.609 13.391,11.977 13,11.586 L8.4145,7.00025 Z" id="Shape"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

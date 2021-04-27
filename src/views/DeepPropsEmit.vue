@@ -1,6 +1,6 @@
 <template>
   <div>Parent food: {{ parentFood }}</div>
-  <main-child :parentFood="parentFood" @mainChildShout="accepted"></main-child>
+  <!-- <main-child :parentFood="parentFood" @mainChildShout="accepted"></main-child> -->
 </template>
 
 <script>
@@ -11,7 +11,7 @@ export default {
 		}
 	},
 	components: {
-		'main-child': require ("../components/DeepPropsEmit/mainChild").default,
+		// 'main-child': require ("../components/DeepPropsEmit/mainChild").default,
 	},
 	methods: {
 		accepted(payload){

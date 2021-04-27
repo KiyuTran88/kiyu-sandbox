@@ -15,6 +15,11 @@ export default {
 			parentFood: "Beef",
 		}
 	},
+	methods:{
+		logStatus(){
+			console.log("worked")
+		}
+	},
 	components: {
 		"main-child": require("../components/provideInject/mainChild").default,
 	},
@@ -22,6 +27,7 @@ export default {
 		// provide write as functions to return a object foodName
 		return {
 			foodName: this.parentFood, // = Beef
+			logItem: this.logStatus
 		}
 	},
 }
