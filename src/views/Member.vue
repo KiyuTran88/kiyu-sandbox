@@ -29,7 +29,8 @@ export default {
 		}
 	},
 	methods: {
-		checkState(state) { // toggle in commom use
+		checkState(state) {
+			// toggle in commom use
 			if (state === true) {
 				return "Show"
 			} else {
@@ -56,6 +57,8 @@ export default {
 	font-size: 0.95rem;
 	letter-spacing: -0.01rem;
 	color: #333;
+	margin: 0;
+	padding: 0;
 
 	h2 {
 		font-size: 2rem;

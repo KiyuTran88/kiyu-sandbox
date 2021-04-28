@@ -15,10 +15,10 @@ export default {
 			parentFood: "Beef",
 		}
 	},
-	methods:{
-		logStatus(){
+	methods: {
+		logStatus() {
 			console.log("worked")
-		}
+		},
 	},
 	components: {
 		"main-child": require("../components/provideInject/mainChild").default,
@@ -27,7 +27,7 @@ export default {
 		// provide write as functions to return a object foodName
 		return {
 			foodName: this.parentFood, // = Beef
-			logItem: this.logStatus
+			logItem: this.logStatus,
 		}
 	},
 }
@@ -35,25 +35,33 @@ export default {
 
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;600;800&display=swap");
+* {
+	font-family: "Mulish", sans-serif;
+	font-size: 0.95rem;
+	letter-spacing: -0.01rem;
+	color: #333;
+	margin: 0;
+	padding: 0;
 
-div,
-button {
-	font-size: 1.5rem;
-	margin: 1rem;
+	div,
+	button {
+		font-size: 1.5rem;
+		margin: 1rem;
 
-	aside {
-		font-size: 1rem;
-		width: 18rem;
-		background-color: rgb(207, 207, 207);
-		padding: 1rem;
-		border-radius: 1rem;
-		margin: 0.5rem 0;
-	}
+		aside {
+			font-size: 1rem;
+			width: 18rem;
+			background-color: rgb(207, 207, 207);
+			padding: 1rem;
+			border-radius: 1rem;
+			margin: 0.5rem 0;
+		}
 
-	.content {
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
+		.content {
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+		}
 	}
 }
 </style>

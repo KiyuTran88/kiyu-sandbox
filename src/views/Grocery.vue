@@ -78,13 +78,15 @@ export default {
 <style lang="scss" scroped>
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;600;800&display=swap");
 
-body {
+* {
 	font-family: "Mulish", sans-serif;
 	font-size: 0.95rem;
+	letter-spacing: -0.01rem;
 	color: #333;
-
+	margin: 0;
+	padding: 0;
 	h2 {
-		color: #00bf82;
+		color: #4639ff;
 		font-size: 2rem;
 		padding: 0 1rem;
 	}

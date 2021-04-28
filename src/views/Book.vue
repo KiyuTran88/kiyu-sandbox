@@ -6,7 +6,7 @@
 			<span class="shopping-cart">{{ selectedBook }} books</span>
 		</div>
 	</header>
-<base-card :bookList="bookList" @updateCart="updateCart"></base-card>
+	<base-card :bookList="bookList" @updateCart="updateCart"></base-card>
 </template>
 <script>
 import baseCard from "../components/common/base-card"
@@ -69,8 +69,8 @@ export default {
 		},
 	},
 	components: {
-		"base-card" : baseCard
-	}
+		"base-card": baseCard,
+	},
 }
 </script>
 
@@ -81,6 +81,8 @@ export default {
 	font-size: 0.95rem;
 	letter-spacing: -0.01rem;
 	color: #333;
+	margin: 0;
+	padding: 0;
 
 	h2 {
 		font-size: 2rem;

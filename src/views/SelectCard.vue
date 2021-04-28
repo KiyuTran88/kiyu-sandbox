@@ -1,23 +1,23 @@
 <template>
-	<div class="headline-wrap"><h2>Select Hero</h2>
-	<div class="button-wrap">
-		<button class="button" @click="addPerson">Add Sample Card</button>
-		<button class="button" @click="sortCard">Sort Cards</button>
-		<button class="button" @click="toggleCard">Add Custom Card</button>
-	</div></div>
+	<div class="headline-wrap">
+		<h2>Select Hero Cards</h2>
+		<div class="button-wrap">
+			<button class="button" @click="addPerson">Add Sample Card</button>
+			<button class="button" @click="sortCard">Sort Cards</button>
+			<button class="button" @click="toggleCard">Add Custom Card</button>
+		</div>
+	</div>
 	<div class="card-wrap">
 		<name-card v-for="person in personList" :key="person" @findIndex="removeCard" :person="person"></name-card>
 	</div>
 	<input-field v-if="cardDisplay === true"></input-field>
-	<!-- <div v-for="person in personList" :key="person">
-		{{ person.name }}
-	</div>
-	<div>{{ personList }}</div> -->
+	<!-- <div>{{ message }}</div> -->
 </template>
 <script>
 export default {
 	data() {
 		return {
+			message: "Please input name here",
 			cardDisplay: false,
 			newHero: { name: "Kiyu", phone: "Think about me, then i may call you", email: "Dont you think heroes use email?", isShow: true },
 			customCard: {
@@ -96,28 +96,43 @@ export default {
 			console.table(this.personList)
 		},
 		sortCard() {
+			// sorting Objects
 			this.personList = this.personList.sort((a, b) => {
 				return a.name < b.name ? -1 : 1
 			})
 		},
 		submitCard() {
 			const newItem = {
-				// temporary declaration
 				name: this.customCard.name,
 				phone: this.customCard.phone,
 				email: this.customCard.email,
 				isShow: this.customCard.isShow,
+				// temporary declaration
 			}
-			this.personList.push(newItem)
+			if (this.personList.some((person) => person.name === this.customCard.name)) {
+				//finding an object with key
+				alert(`Please type new name. Can't add duplicated ${this.customCard.name}`)
+				console.log("Duplicated")
+			} else {
+				this.personList.push(newItem)
+				console.log(`Added ${this.customCard.name} to Hero list!`)
+			}
 			this.customCard.name = "" // refresh text field
 			this.customCard.phone = "" // refresh text field
 			this.customCard.email = "" // refresh text field
 			this.cardDisplay = !this.cardDisplay
-			console.table(this.personList)
+		},
+		checkDuplicate() {
+			if (this.personList.some((person) => person.name === this.customCard.name)) {
+				this.message = "Duplicated"
+				console.log(this.message)
+			} else {
+				this.message = "Can Add"
+				console.log("Can Add")
+			}
 		},
 		toggleCard() {
 			this.cardDisplay = !this.cardDisplay
-			// console.log("worked")
 		},
 	},
 	mounted() {},
@@ -131,6 +146,8 @@ export default {
 			logConsole: this.logItem,
 			submitData: this.submitCard,
 			closeDialog: this.toggleCard,
+			checkName: this.checkDuplicate,
+			dialogMessage: this.message,
 		}
 	},
 }
@@ -138,14 +155,16 @@ export default {
 <style lang="scss">
 @import url("https://fonts.googleapis.com/css2?family=Mulish:wght@200;400;600;800&display=swap");
 * {
-	margin: 0;
 	font-family: "Mulish", sans-serif;
 	font-size: 0.95rem;
 	letter-spacing: -0.01rem;
 	color: #333;
+	margin: 0;
+	padding: 0;
 
 	h2 {
 		font-size: 2rem;
+		color: rgb(70, 57, 255);
 	}
 }
 .content-wrap {
@@ -164,7 +183,10 @@ export default {
 		box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 		filter: brightness(102%);
 	}
-
+	.desciption {
+		font-size: 0.75rem;
+		color: rgb(119, 119, 119);
+	}
 	.title-wrap {
 		display: flex;
 		justify-content: space-between;
@@ -218,8 +240,8 @@ export default {
 		padding: 0.5rem;
 	}
 	.opacity {
-		opacity: 0.5
-	} 
+		opacity: 0.5;
+	}
 }
 .headline-wrap {
 	display: flex;

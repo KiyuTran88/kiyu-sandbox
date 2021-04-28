@@ -23,8 +23,8 @@ export default {
 	methods: {
 		logUserInfo() {
 			console.log(this.userInfo.userName)
-         console.log(this.userInfo.passWord)
-         console.table(this.userInfo)
+			console.log(this.userInfo.passWord)
+			console.table(this.userInfo)
 		},
 	},
 }
@@ -37,9 +37,10 @@ export default {
 	font-size: 0.95rem;
 	letter-spacing: -0.01rem;
 	color: #333;
-
+	margin: 0;
+	padding: 0;
 	h2 {
-		font-size: 2rem;
+		font-size: 1rem;
 	}
 	button {
 		font-size: 1.25rem;

@@ -1,4 +1,4 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 
 const routes = [
@@ -67,10 +67,15 @@ const routes = [
     name: 'Computed',
     component: () => import('../views/Computed.vue')
   },
+  {
+    path: '/arrayduplicate',
+    name: 'ArrayDuplicate',
+    component: () => import('../views/ArrayDuplicate.vue')
+  },
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

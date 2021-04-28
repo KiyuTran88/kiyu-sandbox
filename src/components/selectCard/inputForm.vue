@@ -10,14 +10,18 @@
 				</div>
 				<h3>Join us</h3>
 				<span>Hero name</span>
-				<input v-model="customCard.name" type="text" />
+				<input @keydown.enter="checkName" v-model="customCard.name" type="text" />
+				<span class="desciption">{{ dialogMessage }}</span><br/>
 				<span>Phone</span>
 				<input v-model="customCard.phone" type="text" />
+				<span class="desciption">Please type only number</span><br/>
 				<span>Email</span>
 				<input v-model="customCard.email" type="text" />
+				<span class="desciption">Email not includes special characters</span><br/>
 				<div class="button-wrap">
 					<button class="button" @click="submitData">Submit</button>
 				</div>
+				<!-- <div>{{ customCard }}</div> -->
 			</div>
 		</div>
 	</div>
@@ -28,7 +32,7 @@ export default {
 	data() {
 		return {}
 	},
-	inject: ["customCard", "logConsole", "submitData", "closeDialog"],
+	inject: ["customCard", "logConsole", "submitData", "closeDialog","checkName","dialogMessage"],
 }
 </script>
 
@@ -40,6 +44,8 @@ export default {
 	font-size: 0.95rem;
 	letter-spacing: -0.01rem;
 	color: #333;
+	margin: 0;
+	padding: 0
 
 	h2 {
 		font-size: 2rem;
