@@ -38,13 +38,13 @@ export default {
 	data() {
 		return {
 			itemList: [
-				{ name: "Dry Noodle", price: 4, quantity: 0, isSelected: false },
-				{ name: "White Rice", price: 6, quantity: 0, isSelected: false },
-				{ name: "Ice Cream", price: 9, quantity: 0, isSelected: false },
-				{ name: "Kobe Breef", price: 10, quantity: 0, isSelected: false },
-				{ name: "Fresh Chicken", price: 100, quantity: 0, isSelected: false },
-				{ name: "Japanese tofu", price: 10, quantity: 0, isSelected: false },
-				{ name: "Matcha ice cream", price: 10, quantity: 0, isSelected: false },
+				{ name: "Dry Noodle 🍜", price: 4, quantity: 0, isSelected: false },
+				{ name: "White Rice 🍚", price: 6, quantity: 0, isSelected: false },
+				{ name: "Ice Cream 🍦", price: 9, quantity: 0, isSelected: false },
+				{ name: "Kobe Breef 🥩", price: 10, quantity: 0, isSelected: false },
+				{ name: "Fresh Chicken 🍗", price: 100, quantity: 0, isSelected: false },
+				{ name: "Japanese tofu 🧈", price: 10, quantity: 0, isSelected: false },
+				{ name: "Matcha ice cream 🍧", price: 10, quantity: 0, isSelected: false },
 			],
 		}
 	},

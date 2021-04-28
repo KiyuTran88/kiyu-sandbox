@@ -6,8 +6,8 @@
 			</span>
 		</div>
 		<div class="title-wrap">{{ person.name }}</div>
-		<div>Call me: {{ person.phone }}</div>
-		<div>Email: {{ person.email }}</div>
+		<div>☎️ {{ person.phone }}</div>
+		<div>💌 {{ person.email }}</div>
 	</div>
 </template>
 

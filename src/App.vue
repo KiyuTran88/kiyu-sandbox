@@ -1,9 +1,9 @@
 <template>
 	<div class="nav-bar">
 		<router-link to="/">Home</router-link>
-		<!-- <router-link to="/book">Book Store</router-link> -->
 		<router-link to="/grocery">Grocery</router-link>
 		<router-link to="/SelectCard">Phone Book</router-link>
+		<!-- <router-link to="/book">Book Store</router-link> -->
 		<!-- <router-link to="/payload">Payload</router-link> -->
 		<!-- <router-link to="/food">Food</router-link> -->
 		<!-- <router-link to="/member">Member</router-link> -->

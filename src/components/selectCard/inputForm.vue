@@ -8,20 +8,20 @@
 						<img src="../../assets/icon_close_dark.svg" />
 					</span>
 				</div>
-				<h3>Join us</h3>
+				<h3>Join us ☀️</h3>
 				<span>Hero name</span>
 				<input @keydown.enter="checkName" v-model="customCard.name" type="text" />
-				<span class="desciption">{{ dialogMessage }}</span><br/>
+				<span class="desciption">{{ message }}</span
+				><br />
 				<span>Phone</span>
 				<input v-model="customCard.phone" type="text" />
-				<span class="desciption">Please type only number</span><br/>
+				<span class="desciption">Please type only number</span><br />
 				<span>Email</span>
 				<input v-model="customCard.email" type="text" />
-				<span class="desciption">Email not includes special characters</span><br/>
+				<span class="desciption">Email not includes special characters</span><br />
 				<div class="button-wrap">
 					<button class="button" @click="submitData">Submit</button>
 				</div>
-				<!-- <div>{{ customCard }}</div> -->
 			</div>
 		</div>
 	</div>
@@ -32,7 +32,10 @@ export default {
 	data() {
 		return {}
 	},
-	inject: ["customCard", "logConsole", "submitData", "closeDialog","checkName","dialogMessage"],
+	props: {
+		message: Boolean,
+	},
+	inject: ["customCard", "logConsole", "submitData", "closeDialog", "checkName", "dialogMessage", "changeDialogMessage"],
 }
 </script>
 
@@ -45,9 +48,7 @@ export default {
 	letter-spacing: -0.01rem;
 	color: #333;
 	margin: 0;
-	padding: 0
-
-	h2 {
+	padding: 0 h2 {
 		font-size: 2rem;
 		padding: 0;
 		margin: 0;
@@ -58,14 +59,15 @@ export default {
 		margin: 0 0 2rem 0;
 	}
 }
-input[type=text], select {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+input[type="text"],
+select {
+	width: 100%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
 }
 .scrim-bg {
 	display: flex;
@@ -94,7 +96,7 @@ input[type=text], select {
 			box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 			filter: brightness(102%);
 		}
-    
+
 		.title-wrap {
 			display: flex;
 			justify-content: space-between;

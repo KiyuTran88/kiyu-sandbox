@@ -1,23 +1,23 @@
 <template>
 	<div class="headline-wrap">
-		<h2>Select Hero Cards</h2>
+		<h2>Select Cards</h2>
 		<div class="button-wrap">
-			<button class="button" @click="addPerson">Add Sample Card</button>
-			<button class="button" @click="sortCard">Sort Cards</button>
-			<button class="button" @click="toggleCard">Add Custom Card</button>
+			<button class="button" @click="addPerson">Sample</button>
+			<button class="button" @click="sortCard">Sorting</button>
+			<button class="button" @click="toggleCard">Custom Card</button>
 		</div>
 	</div>
 	<div class="card-wrap">
-		<name-card v-for="person in personList" :key="person" @findIndex="removeCard" :person="person"></name-card>
+		<name-card v-for="person in personList" :key="person" @findIndex="removeCard" :person="person" :message="message"></name-card>
 	</div>
 	<input-field v-if="cardDisplay === true"></input-field>
-	<!-- <div>{{ message }}</div> -->
+	<!-- <div>{{`Description: ${changeMessage}`}}</div> -->
 </template>
 <script>
 export default {
 	data() {
 		return {
-			message: "Please input name here",
+			message: "Please input hero name",
 			cardDisplay: false,
 			newHero: { name: "Kiyu", phone: "Think about me, then i may call you", email: "Dont you think heroes use email?", isShow: true },
 			customCard: {
@@ -124,11 +124,11 @@ export default {
 		},
 		checkDuplicate() {
 			if (this.personList.some((person) => person.name === this.customCard.name)) {
-				this.message = "Duplicated"
+				this.message = false
 				console.log(this.message)
 			} else {
-				this.message = "Can Add"
-				console.log("Can Add")
+				this.message = true
+				console.log(this.message)
 			}
 		},
 		toggleCard() {
@@ -148,7 +148,13 @@ export default {
 			closeDialog: this.toggleCard,
 			checkName: this.checkDuplicate,
 			dialogMessage: this.message,
+			changeDialogMessage: this.changeMessage,
 		}
+	},
+	computed: {
+		changeMessage() {
+			return this.message
+		},
 	},
 }
 </script>
@@ -213,7 +219,7 @@ export default {
 		background-color: rgb(70, 57, 255);
 		color: white;
 		padding: 1rem;
-		margin: 0rem 0rem 0.5rem 0.5rem;
+		margin: 0rem 0rem 0rem 0.5rem;
 		border: none;
 		border-radius: 1.5rem;
 		width: fit-content;
@@ -254,5 +260,14 @@ export default {
 	flex-wrap: wrap;
 	// background-color: salmon;
 	justify-content: center;
+}
+@media only screen and (max-width: 600px) {
+	.headline-wrap {
+		flex-direction: column;
+		padding: 1rem;
+	}
+	.button-wrap{
+		margin-top: 1rem
+	}
 }
 </style>
