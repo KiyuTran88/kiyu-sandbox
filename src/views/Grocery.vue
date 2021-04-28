@@ -1,5 +1,7 @@
 <template>
-	<h2>Hatchin Shop</h2>
+	<div class="headline-wrap">
+		<h2>Hatchin Shop</h2>
+	</div>
 	<div class="main-wrap" v-for="item in itemList" :key="item">
 		<div class="content-wrap" @click="addToCart(item)" :class="{ selected: item.isSelected === true }">
 			<div class="item-label">
@@ -39,7 +41,10 @@ export default {
 				{ name: "Dry Noodle", price: 4, quantity: 0, isSelected: false },
 				{ name: "White Rice", price: 6, quantity: 0, isSelected: false },
 				{ name: "Ice Cream", price: 9, quantity: 0, isSelected: false },
-				{ name: "Breef", price: 10, quantity: 0, isSelected: false },
+				{ name: "Kobe Breef", price: 10, quantity: 0, isSelected: false },
+				{ name: "Fresh Chicken", price: 100, quantity: 0, isSelected: false },
+				{ name: "Japanese tofu", price: 10, quantity: 0, isSelected: false },
+				{ name: "Matcha ice cream", price: 10, quantity: 0, isSelected: false },
 			],
 		}
 	},
@@ -82,7 +87,7 @@ export default {
 	font-family: "Mulish", sans-serif;
 	font-size: 0.95rem;
 	letter-spacing: -0.01rem;
-	color: #333;
+	// color: #333;
 	margin: 0;
 	padding: 0;
 	h2 {
@@ -91,7 +96,7 @@ export default {
 		padding: 0 1rem;
 	}
 	h3 {
-		color: #02ea8b;
+		color: white;
 		font-size: 1.3rem;
 		margin: 0;
 		padding: 0.25rem 0;
@@ -104,6 +109,7 @@ export default {
 	justify-content: flex-start;
 	margin: 0.5rem;
 	width: 10rem;
+	padding: 0rem 2rem;
 
 	.content-wrap {
 		display: flex;
@@ -139,7 +145,7 @@ export default {
 	}
 }
 .page-wrap {
-	background-color: rgb(31, 31, 31);
+	background-color: #0e1219;
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -153,8 +159,8 @@ export default {
 		.cart-content-wrap {
 			display: flex;
 			flex-direction: column;
-			background-color: rgb(44, 44, 44);
-			color: rgb(199, 199, 199);
+			background-color: #1C202C;
+			color: rgb(199, 199, 199)!important;
 			border-radius: 0.75rem;
 			padding: 1rem;
 			min-width: 20rem;
@@ -168,7 +174,7 @@ export default {
 
 			&:hover {
 				color: white;
-				background-color: rgb(53, 53, 53);
+				background-color:#1b2030;
 
 				.button-wrap {
 					display: flex;
