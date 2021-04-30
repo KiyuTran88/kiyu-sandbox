@@ -113,7 +113,6 @@ export default {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	margin: 0.5rem;
 
 	.content-wrap {
 		display: flex;

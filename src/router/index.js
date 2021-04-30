@@ -8,6 +8,16 @@ const routes = [
     component: Home
   },
   {
+    path: '/uxcommunity',
+    name: 'UXCommunity',
+    component: () => import('../views/UXCommunity.vue')
+  },
+  {
+    path: '/uxmembers',
+    name: 'UXmembers',
+    component: () => import('../views/UXmembers.vue')
+  },
+  {
     path: '/payload',
     name: 'Payload',
     component: () => import('../views/Payload.vue')
@@ -53,11 +63,6 @@ const routes = [
     component: () => import('../views/ProvideInject.vue')
   },
   {
-    path: '/selectcard',
-    name: 'SelectCard',
-    component: () => import('../views/SelectCard.vue')
-  },
-  {
     path: '/vmodel',
     name: 'Vmodel',
     component: () => import('../views/Vmodel.vue')
@@ -71,6 +76,11 @@ const routes = [
     path: '/arrayduplicate',
     name: 'ArrayDuplicate',
     component: () => import('../views/ArrayDuplicate.vue')
+  },
+  {
+    path: '/slot',
+    name: 'Slot',
+    component: () => import('../views/Slot.vue')
   },
 ]
 

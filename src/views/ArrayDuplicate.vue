@@ -6,6 +6,7 @@ brackets {{}} + {{}} // type2: use + in one curly bracket {{ item1 + item2 }}
 		<input @keydown.enter="addFood" @keydown.esc="this.newFood = ''" v-model="newFood" type="text" />
 		<button @click="addFood">Add</button>
 		<button @click="checkName">Check Name</button>
+		<button @click="isEmailValid">Check Email</button>
 		<div>{{ foodList }}</div>
 		<div>{{ `Wanwan food menu ${foodList}` }}</div>
 		<div>{{ `Wanwan likes ${newFood}` }}</div>
@@ -16,6 +17,7 @@ brackets {{}} + {{}} // type2: use + in one curly bracket {{ item1 + item2 }}
 export default {
 	data() {
 		return {
+			emailString: "kiyutran@gmail.com",
 			foodList: [],
 			newFood: "",
 			personList: [{ name: "Batman" }, { name: "Hero" }],
@@ -38,6 +40,11 @@ export default {
 				console.log("Can add")
 			}
 		},
+		isEmailValid(){
+			const emailString = 'kiyutran@gmail.com';
+			const regex = new RegExp('w');
+			console.log(regex.test(emailString))
+		}
 	},
 }
 </script>

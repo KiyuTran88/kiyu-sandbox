@@ -1,5 +1,5 @@
 <template>
-	<div class="headline-wrap">
+	<div class="headline-card-wrap">
 		<h2>Hatchin Shop</h2>
 	</div>
 	<div class="main-wrap" v-for="item in itemList" :key="item">
@@ -101,6 +101,14 @@ export default {
 		margin: 0;
 		padding: 0.25rem 0;
 	}
+}
+
+.headline-card-wrap {
+	display: flex;
+	// flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	padding: 3rem 2rem 2rem 2rem;
 }
 
 .main-wrap {

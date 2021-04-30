@@ -1,13 +1,16 @@
 <template>
-	<div class="content-wrap" v-if="person.isShow === true" @click="provideName(person.name)">
+	<div class="content-wrap" v-if="person.isShow === true" >
 		<div class="icon-wrap">
-			<span class="close-icon" @click="closeDialog">
+			<span class="close-icon" @click="provideName(person.name)">
 				<img src="../../assets/icon_close_dark.svg" />
 			</span>
 		</div>
-		<div class="title-wrap">{{ person.name }}</div>
-		<div>☎️ {{ person.phone }}</div>
-		<div>💌 {{ person.email }}</div>
+		<div class="title">{{ person.title }}</div>
+		<div class="content-card">{{ person.decription }}</div>
+		<div class="text-link-wrap">
+			<div class="author" >🎖{{ `${person.name} • 3 days ago` }}</div>
+			<div class="text-link">Read more</div>
+		</div>
 	</div>
 </template>
 
@@ -22,69 +25,38 @@ export default {
 			console.log(payload)
 		},
 	},
-	props: ["person", "newHero"],
+	props: ["person", "newHero","removeCard"],
 	emits: ["findIndex"],
 }
 </script>
 
 <style lang="scss" scoped>
-.content-wrap {
-	display: flex;
-	flex-direction: column;
-	background-color: #eee;
-	border-radius: 0.75rem;
-	padding: 1rem;
-	min-width: 20rem;
-	max-width: 32rem;
-	margin: 0.5rem;
 
-	.icon-wrap {
-		display: flex;
-		flex-direction: flex-end;
-		display: none;
-	}
-
-	&:hover {
-		cursor: pointer;
-		// transform: scale(1.05,1.05);
-		transform: translateY(-5px);
-		box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
-		filter: brightness(102%);
-
-		.icon-wrap {
-			display: flex;
-			position: relative;
-			margin-left: auto;
-
-			.close-icon {
-				width: 0.75rem;
-				height: 0.75rem;
-				display: flex;
-				padding: 0.5rem;
-				position: absolute;
-				background-color: rgb(207, 207, 207);
-				border-radius: 1rem;
-				margin-left: -0.5rem;
-				margin-top: -1.2rem;
-			}
-			.opacity {
-				opacity: 0.5;
-			}
-		}
-	}
-
-	.title-wrap {
+	.title {
 		display: flex;
 		justify-content: space-between;
 		font-weight: 800;
 		margin-bottom: 1rem;
+		font-size: 1.15rem;
 	}
-	.email-display {
+	.content-card {
+		font-size: 0.9rem;
+		color: rgb(92, 90, 107);
+		line-height: 1.2rem;
+	}
+	.text-link-wrap {
+		display: inline-flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-top: auto;
+	}
+
+	.decription-display {
 		display: none;
 		&:hover {
 			display: block;
 			background-color: gold;
 		}
 	}
-}
+
 </style>
