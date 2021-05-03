@@ -1,7 +1,14 @@
 <template>
+	<div class="title-card-wrap gradient-bg">
+		<div class="title-wrap">
+			<h2>About us</h2>
+			<h4>🎯 Welcome to Kiyu Vue Playground 🏖</h4>
+		</div>
+		<div class="button-wrap">
+			<button class="button" @click="toggleSignup">Become a member</button>
+		</div>
+	</div>
 	<div class="headline">
-		<h2>About UX Community</h2>
-		<h4>🎯 Welcome to Kiyu Vue Playground 🏖</h4>
 		<div class="content-center">
 			<router-link to="/book">Book Store</router-link><br />
 			<router-link to="/food">Food Calculator</router-link><br />

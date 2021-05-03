@@ -13,13 +13,13 @@
 				<br /><br />
 				<span>Full name</span>
 				<input @keydown.enter="checkDuplicate" @keydown.esc="resetInput" v-model.trim="customCard.name" type="text" />
-				<span v-if="errorDuplicated.isActive === false" class="desciption">Fullname will display in your certificate</span>
-				<span v-if="errorDuplicated.isActive === true" class="desciption errorMessage">{{ errorDuplicated.message }}</span>
+					<span v-if="errorDuplicated.isActive === false" class="desciption">Fullname will display in your certificate</span>
+					<span v-if="errorDuplicated.isActive === true" class="desciption errorMessage">{{ errorDuplicated.message }}</span>
 				<br />
 				<span>Email</span>
 				<input @keydown.enter="isEmailValid" @keydown.esc="resetInput" v-model="customCard.email" type="text" />
-				<span v-if="errorEmail.isActive === false" class="desciption">Keep in-touch with us anytime</span>
-				<span v-if="errorEmail.isActive === true" class="desciption errorMessage">{{ errorEmail.message }}</span>
+					<span v-if="errorEmail.isActive === false" class="desciption">Keep in-touch with us anytime</span>
+					<span v-if="errorEmail.isActive === true" class="desciption errorMessage">{{ errorEmail.message }}</span>
 				<br />
 				<div class="button-wrap">
 					<button class="button" @click="submitData" :disabled="!isFormCompleted">Submit</button>
